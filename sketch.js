@@ -12,17 +12,16 @@ function preload() {
     torreImg = loadImage("torre.png");
 
 
-    //criar os grupos das grades e das portas
-    grupoBlocoInvisivel = new Group();
-
-
     //carregando as animações do fantasma
     player_parado = loadAnimation("fantasma parado.png");
     player_pulando = loadAnimation("fantasma pulando.png");
 
     //carregar som
 
-
+    
+    grupoBlocoInvisivel = new Group()
+    //criar os grupos das grades e das portas
+    
 }
 
 function setup() {
@@ -33,7 +32,7 @@ function setup() {
     torre.velocityY = 1;
 
     //tocar o som em loop
-
+    
     //criando o player
     player = createSprite(200, 200, 50, 50);
     player.addAnimation("player parado", player_parado);
@@ -47,19 +46,32 @@ function draw() {
     background(200);
 
     if (estadoJogo === "jogar") {
-        drawSprites();
+        //é aqui que muda a animação do player para ele parado.
+
+
         //código para controlar o jogador para cima
 
-        //código para controlar o jogador para esquerda
+        
+
+        //código para controlar o jogador para Esquerda
+        if (keyDown("left")) {
+            player.x -= 3;
+            player.changeAnimation("player pulando");
+        }
 
         //código para controlar o jogador para direita
 
-
+        
         //gravidade
 
+        //Código para reiniciar a torre
 
-        //é aqui que chama a função gerarPortas 
+
+        //é aqui que programa para o player colidir com as grades
+
+        //é aqui que chama a função gerarPortas()
  
+        drawSprites();
 
         //código para finalizar o jogo
         if (player.isTouching(grupoBlocoInvisivel) || player.y > height) {
@@ -67,10 +79,10 @@ function draw() {
         }
     }
     if (estadoJogo === "fim") {
-        background(0)
-        fill("yellow")
+        background(0);
+        fill("yellow");
         textSize(70);
-        
+        text("VOCÊ PERDEU", 30, 200);
     }
 
 }
@@ -82,28 +94,30 @@ function gerarPortas() {
 
         porta = createSprite(200, -50);
         porta.x = Math.round(random(120, 400))
+
         grade = createSprite(porta.x, 10);
+
         blocoInvisivel = createSprite(porta.x, 15, grade.width, 2);
-        blocoInvisivel.visible = false;
+
+        //fazer o bloco invisivel ser invisivel
+
 
         //código para adicionar as imagens nas sprites
-        porta.addImage(portaImg);
-        //é aqui que adiciona a imagem na sprite grade
 
-
-        //é aqui que define a velocidade das sprites
+        
+           
+        //velocidade das sprites
         blocoInvisivel.velocityY = 1;
 
 
-
-        //é aqui que define o tempo de vida das sprites
+        //tempo de vida das sprites
         blocoInvisivel.lifetime = 800;
+        
+        //programe para que o player esteja na frente  do jogador
 
-
-
-        //é aqui que adiciona nos grupos as sprites
+        //adicionar nos grupos as sprites
         grupoBlocoInvisivel.add(blocoInvisivel);
-
+        
 
 
     }
