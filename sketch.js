@@ -100,7 +100,7 @@ function gerarPortas() {
 
         grade = createSprite(porta.x, 10);
 
-        blocoInvisivel = createSprite(porta.x + 10, 15, grade.width, 2);
+        blocoInvisivel = createSprite(porta.x, 25, grade.width, 2);
 
         //adicione o código para o bloco invisivel ser invisivel
 
