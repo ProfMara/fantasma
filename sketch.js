@@ -117,7 +117,7 @@ function gerarPortas() {
         blocoInvisivel.lifetime = 800;
         //agora, dê tempo de vida para a porta e a grade
         
-        //programe para que o player esteja na frente  do jogador aumentando seu depth
+        //programe para que o player esteja na frente  da porta aumentando seu depth
 
         //é assim que se adiciona uma sprite no grupo
         grupoBlocoInvisivel.add(blocoInvisivel);
